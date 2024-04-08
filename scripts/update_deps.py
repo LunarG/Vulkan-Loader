@@ -506,6 +506,12 @@ class GoodRepo(object):
             if self._args.arch.lower() == '64' or self._args.arch == 'x64' or self._args.arch == 'win64':
                 cmake_cmd.append('-A')
                 cmake_cmd.append('x64')
+            elif self._args.arch.lower() == 'arm64':
+                cmake_cmd.append('-A')
+                cmake_cmd.append('arm64')
+            elif self._args.arch.lower() == 'arm64ec':
+                cmake_cmd.append('-A')
+                cmake_cmd.append('arm64ec')
             else:
                 cmake_cmd.append('-A')
                 cmake_cmd.append('Win32')
@@ -683,7 +689,7 @@ def main():
     parser.add_argument(
         '--arch',
         dest='arch',
-        choices=['32', '64', 'x86', 'x64', 'win32', 'win64'],
+        choices=['32', '64', 'x86', 'x64', 'win32', 'win64', 'arm64', 'arm64ec'],
         type=str.lower,
         help="Set build files architecture (Visual Studio Generator Only)",
         default='64')
